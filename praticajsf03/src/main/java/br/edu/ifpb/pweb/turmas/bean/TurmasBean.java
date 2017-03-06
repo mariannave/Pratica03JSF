@@ -57,12 +57,12 @@ public class TurmasBean {
 		this.editavel.put(turma.getId(), false);
 	}
 	
-	public String excluir(Turma turma) {
+	public void excluir(Turma turma) {
 		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		turmaDao.beginTransaction();
 		turmaDao.delete(turma);
 		turmaDao.commit();
-		return "listar-turmas?faces-redirect=true";
+		this.turmas.remove(this.turma);
 	}
 	
 	public String cadastrar(){
