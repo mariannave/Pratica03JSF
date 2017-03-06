@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+	</h:head>
+	<h:body>
+	<h1>Cadastro de aluno <i class="fa fa-pencil" aria-hidden="true"></i></h1>
+		<h:form>
+			<h:outputLabel for="matricula" value="Matricula: "/>
+			<h:inputText id="matricula" value="#{alunosBean.aluno.matricula}" required="true"/>
+			<h:outputLabel for="nome" value="Nome: "/>
+			<h:inputText id="nome" value="#{alunosBean.aluno.nome}" required="true"/>
+			<h:outputLabel for="email" value="E-mail: "/>
+			<h:inputText id="email" value="#{alunosBean.aluno.email}" required="true"/>
+			<h:commandButton action="#{alunosBean.cadastrarAluno}" value="Matrícular" styleClass="btn"/>
+			<h:commandButton value="Voltar" action="listar-alunos" immediate="true"/>
+			
+		</h:form>	
+	</h:body>
+</html>
