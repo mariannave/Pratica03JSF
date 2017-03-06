@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+	</h:head>
+	<h:body>
+		<h:form>
+			<h:commandButton value="Listar" actionListener="#{turmasBean.listar}"/>
+						
+			<h:dataTable value="#{turmasBean.turmas}" var="turma" style="background-color:#b1cbbb" 
+			rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
+				<h:column>
+					<f:facet name="header">#</f:facet>
+					<h:selectBooleanCheckbox value="#{turmasBean.editavel[turma.id]}" onclick="submit()"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					#{turma.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:commandLink action="#{turmasBean.mostrarAlunos(turma)}">
+						<h:outputText value="#{turma.nome}" />
+					</h:commandLink>
+					
+					<h:inputText id="nome" value="#{turma.nome}" />
+					<h:commandLink actionListener="#{turmasBean.salvar(turma)}" styleClass="fa fa-save" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Criada em</f:facet>
+					<h:outputText value="#{turma.dataCriacao}">
+						<f:convertDateTime dateStyle="medium" />
+					</h:outputText>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	
+	</h:body>
+</html>
