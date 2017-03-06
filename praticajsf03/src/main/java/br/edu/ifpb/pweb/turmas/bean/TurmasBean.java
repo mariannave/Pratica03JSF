@@ -17,8 +17,8 @@ import br.edu.ifpb.pweb.turmas.model.Turma;
 
 
 public class TurmasBean {
-	private TurmaDAO turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
-	private List<Turma> turmas  = turmaDao.findAll();
+	private TurmaDAO turmaDao;
+	private List<Turma> turmas;
 	private Map<Long, Boolean> editavel = new HashMap<Long, Boolean>();
 	private Turma turma = new Turma();
 	
@@ -36,7 +36,9 @@ public class TurmasBean {
 	}
 	
 	public void listar(ActionEvent e) {
+		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		this.turmas = turmaDao.findAll();
+		System.out.println(turmaDao.findAll());
 		editavel = new HashMap<Long, Boolean>(this.turmas.size());
 		for (Turma turma : this.turmas) {
 			editavel.put(turma.getId(), false);
@@ -44,27 +46,30 @@ public class TurmasBean {
 	}
 	
 	public Map<Long, Boolean> getEditavel() {
-		System.out.println(this.editavel);
 		return this.editavel;
 	}
 	
 	public void salvar(Turma turma) {
+		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		turmaDao.beginTransaction();
 		turmaDao.update(turma);
 		turmaDao.commit();
 		this.editavel.put(turma.getId(), false);
 	}
 	
-	public void excluir(Turma turma) {
+	public String excluir(Turma turma) {
+		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		turmaDao.beginTransaction();
 		turmaDao.delete(turma);
 		turmaDao.commit();
+		return "listar-turmas?faces-redirect=true";
 	}
 	
 	public String cadastrar(){
+		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		turmaDao.beginTransaction();
 		turmaDao.insert(this.turma);
 		turmaDao.commit();
-		return "listar?faces-redirect=true";
+		return "listar-turmas?faces-redirect=true";
 	}
 }
