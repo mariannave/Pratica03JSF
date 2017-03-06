@@ -11,43 +11,45 @@
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
 	</h:head>
 	<h:body>
-		<h:form>
-			<h:commandButton value="Listar" actionListener="#{turmasBean.listar}"/>		
-			<h:commandButton value="Nova" action="cadastrar"/>
-							
-			<h:dataTable value="#{turmasBean.turmas}" var="turma" rendered="#{not empty turmasBean.turmas}" style="background-color:#b1cbbb" 
-			rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
-				<h:column>
-					<f:facet name="header"> </f:facet>
-					<h:selectBooleanCheckbox value="#{turmasBean.editavel[turma.id]}" onclick="submit()"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">ID</f:facet>
-					#{turma.id}
-				</h:column>
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					<h:commandLink action="#{turmasBean.mostrarAlunos(turma)}" rendered="#{not turmasBean.editavel[turma.id]}">
-						<h:outputText value="#{turma.nome}" />
-					</h:commandLink>
-					
-					<h:panelGroup rendered="#{turmasBean.editavel[turma.id]}">
-						<h:inputText id="nome" value="#{turma.nome}" />
-						<h:commandLink actionListener="#{turmasBean.salvar(turma)}" styleClass="fa fa-save" />
-					</h:panelGroup>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Criada em</f:facet>
-					<h:outputText value="#{turma.dataCriacao}">
-						<f:convertDateTime dateStyle="medium" />
-					</h:outputText>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Excluir</f:facet>
-					<h:commandLink styleClass="fa fa-remove" action="#{turmasBean.excluir(turma)}" />
-				</h:column>
-			</h:dataTable>
-		</h:form>
-	
+		<h1>Turmas <i class="fa fa-graduation-cap" aria-hidden="true"></i></h1>
+		<div class="container">
+			<h:form>			
+				<h:dataTable value="#{turmasBean.turmas}" var="turma" rendered="#{not empty turmasBean.turmas}" style="background-color:#b1cbbb" 
+				rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
+					<h:column>
+						<f:facet name="header"> </f:facet>
+						<h:selectBooleanCheckbox value="#{turmasBean.editavel[turma.id]}" onclick="submit()"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						#{turma.id}
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:commandLink action="#{alunosBean.listarAlunos(turma)}" rendered="#{not turmasBean.editavel[turma.id]}">
+							<h:outputText value="#{turma.nome}" />
+						</h:commandLink>
+						
+						<h:panelGroup rendered="#{turmasBean.editavel[turma.id]}">
+							<h:inputText id="nome" value="#{turma.nome}" />
+							<h:commandLink actionListener="#{turmasBean.salvar(turma)}" styleClass="fa fa-save" />
+						</h:panelGroup>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Criada em</f:facet>
+						<h:outputText value="#{turma.dataCriacao}">
+							<f:convertDateTime dateStyle="medium" />
+						</h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Excluir</f:facet>
+						<h:commandLink styleClass="fa fa-remove" action="#{turmasBean.excluir(turma)}" />
+					</h:column>
+				</h:dataTable>
+				
+				<h:commandButton value="Listar turmas" actionListener="#{turmasBean.listar}"/>		
+				<h:commandButton value="Cadastrar turma" action="cadastrar-turma"/>
+			</h:form>
+		</div>
 	</h:body>
 </html>

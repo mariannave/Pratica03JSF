@@ -11,7 +11,7 @@
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
 	</h:head>
 	<h:body>
-		<h1>Cadastro de turma</h1>
+		<h1>Cadastro de turma <i class="fa fa-pencil" aria-hidden="true"></i></h1>
 		<h:form>
 			<h:outputLabel for="nome" value="Nome:"/>
 			<h:inputText id="nome" value="#{turmasBean.turma.nome}" required="true"/>
@@ -19,7 +19,9 @@
 			<h:inputText id="data" value="#{turmasBean.turma.dataCriacao}" required="true">
 				<f:convertDateTime dateStyle="medium" />
 			</h:inputText>
-			<h:commandButton value="Cadastrar" action="#{turmasBean.cadastrar}"/>		
+			<h:commandButton value="Cadastrar" action="#{turmasBean.cadastrar}"/>	
+			<h:commandButton value="Voltar" action="listar-turmas" immediate="true"/>
+				
 		</h:form>
 	</h:body>
 </html>
