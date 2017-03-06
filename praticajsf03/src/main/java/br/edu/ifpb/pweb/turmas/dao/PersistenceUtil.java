@@ -17,7 +17,7 @@ public class PersistenceUtil {
         try {
     		emf = Persistence.createEntityManagerFactory("turmas");
     		emc = new ManagedEMContext(emf);
-            logger.info("Fábrica de EntityManagers construída.");
+            logger.info("Fï¿½brica de EntityManagers construï¿½da.");
         } catch (Throwable ex) {
             logger.error("Falha ao criar EntityManagerFactory.", ex);
             throw new ExceptionInInitializerError(ex);

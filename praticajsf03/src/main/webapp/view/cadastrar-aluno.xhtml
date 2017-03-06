@@ -8,19 +8,45 @@
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css"/>
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
 	</h:head>
 	<h:body>
-	<h1>Cadastro de aluno <i class="fa fa-pencil" aria-hidden="true"></i></h1>
-		<h:form>
-			<h:outputLabel for="matricula" value="Matricula: "/>
-			<h:inputText id="matricula" value="#{alunosBean.aluno.matricula}" required="true"/>
-			<h:outputLabel for="nome" value="Nome: "/>
-			<h:inputText id="nome" value="#{alunosBean.aluno.nome}" required="true"/>
-			<h:outputLabel for="email" value="E-mail: "/>
-			<h:inputText id="email" value="#{alunosBean.aluno.email}" required="true"/>
-			<h:commandButton action="#{alunosBean.cadastrarAluno}" value="Matrícular" styleClass="btn"/>
-			<h:commandButton value="Voltar" action="listar-alunos" immediate="true"/>
+		<div class="container">
+				<h1  class="page-header">Cadastro de aluno <i class="fa fa-pencil" aria-hidden="true"></i></h1>
+			<br></br>
+			<br></br>
 			
-		</h:form>	
+			<h:form class="form-horizontal">
+			 	<div class="form-group">
+					<h:outputLabel for="matricula" value="Matricula: " class="col-sm-2 control-label"/>
+					<div class="col-xs-3">
+						<h:inputText id="matricula" value="#{alunosBean.aluno.matricula}" required="true" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="nome" value="Nome: " class="col-sm-2 control-label"/>
+					<div class="col-xs-3">
+						<h:inputText id="nome" value="#{alunosBean.aluno.nome}" required="true" class="form-control"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<h:outputLabel for="email" value="E-mail: " class="col-sm-2 control-label"/>
+					<div class="col-xs-3">
+						<h:inputText id="email" value="#{alunosBean.aluno.email}" required="true" class="form-control"/>
+					</div>
+				</div>
+				<br></br>			
+				<br></br>
+				
+				<div class="row">
+		  			<div class="col-xs-6">
+						<h:commandButton action="#{alunosBean.cadastrarAluno}" value="Cadastrar" class="btn btn-primary"/>
+					</div>
+		  			<div class="col-xs-6">
+		  				<h:commandButton value="Voltar" action="listar-alunos" immediate="true" class="btn btn-danger"/>
+					</div>
+				</div>
+			</h:form>
+		</div>
 	</h:body>
 </html>

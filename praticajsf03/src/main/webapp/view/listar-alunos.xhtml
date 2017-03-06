@@ -9,34 +9,48 @@
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css"/>
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+		
 	</h:head>
 	<h:body>
-	<h1>Alunos <i class="fa fa-users" aria-hidden="true"></i></h1>
-		<h:form>
-			<h:outputText rendered="#{empty alunosBean.alunos}" value="Esta turma não possui alunos."/>
-		
-			<h:dataTable var="aluno" value="#{alunosBean.alunos}"  rendered="#{not empty alunosBean.alunos}" style="background-color: gray;" rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
-				<h:column>
-					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#{aluno.id}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Matrícula</f:facet>
-					<h:outputText value="#{aluno.matricula}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">Nome</f:facet>
-					<h:outputText value="#{aluno.nome}"/>
-				</h:column>
-				<h:column>
-					<f:facet name="header">E-mail</f:facet>
-					<h:outputText value="#{aluno.email}"/>
-				</h:column>
-			</h:dataTable>
-
-			<h:commandButton action="#{alunosBean.cadastrar(alunosBean.turma)}" value="Cadastrar"/>
-			<h:commandButton value="Voltar" action="listar-turmas" immediate="true"/>
+		<div class="container">
+			<h1  class="page-header">Alunos <i class="fa fa-users" aria-hidden="true"></i></h1>
+			<br></br>			
+			<br></br>
+			<h:form>
+				<h:outputText rendered="#{empty alunosBean.alunos}" value="Esta turma não possui alunos." class="lead"/>
 			
-		</h:form>
+				<h:dataTable var="aluno" value="#{alunosBean.alunos}"  rendered="#{not empty alunosBean.alunos}" class="table table-striped" headerClass="header">
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+						<h:outputText value="#{aluno.id}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Matrícula</f:facet>
+						<h:outputText value="#{aluno.matricula}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputText value="#{aluno.nome}"/>
+					</h:column>
+					<h:column>
+						<f:facet name="header">E-mail</f:facet>
+						<h:outputText value="#{aluno.email}"/>
+					</h:column>
+				</h:dataTable>
+				<br></br>
+				<br></br>
+				<br></br>
+				
+				<div class="row">
+		  			<div class="col-md-3 col-md-offset-3">
+						<h:commandButton action="#{alunosBean.cadastrar(alunosBean.turma)}" value="Cadastrar aluno" class="btn btn-primary"/>
+					</div>
+					<div class="col-md-2 col-md-offset-2">
+						<h:commandButton value="Voltar" action="listar-turmas" immediate="true" class="btn btn-danger"/>
+					</div>
+				</div>
+			</h:form>
+		</div>
 	</h:body>
 </html>

@@ -9,13 +9,17 @@
 	<h:head>
 		<h:outputStylesheet library="css" name="style.css"/>
 		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+		<h:outputStylesheet library="bootstrap" name="css/bootstrap.css"/>
+		
 	</h:head>
 	<h:body>
-		<h1>Turmas <i class="fa fa-graduation-cap" aria-hidden="true"></i></h1>
-		<div class="container">
+			<div class="container">
+	
+		<h1  class="page-header">Turmas <i class="fa fa-graduation-cap" aria-hidden="true"></i></h1>
+		<br></br>
+		<br></br>
 			<h:form>			
-				<h:dataTable value="#{turmasBean.turmas}" var="turma" rendered="#{not empty turmasBean.turmas}" style="background-color:#b1cbbb" 
-				rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
+				<h:dataTable value="#{turmasBean.turmas}" var="turma" rendered="#{not empty turmasBean.turmas}" class="table table-striped" headerClass="header">
 					<h:column>
 						<f:facet name="header"> </f:facet>
 						<h:selectBooleanCheckbox value="#{turmasBean.editavel[turma.id]}" onclick="submit()"/>
@@ -46,9 +50,18 @@
 						<h:commandLink styleClass="fa fa-remove" action="#{turmasBean.excluir(turma)}" />
 					</h:column>
 				</h:dataTable>
+				<br>
+				</br>
+				<br></br>
 				
-				<h:commandButton value="Listar turmas" actionListener="#{turmasBean.listar}"/>		
-				<h:commandButton value="Cadastrar turma" action="cadastrar-turma"/>
+				<div class="row">
+		  			<div class="col-md-3 col-md-offset-3">
+		  				<h:commandButton value="Listar turmas" actionListener="#{turmasBean.listar}" class="btn btn-primary"/>		
+					</div>
+		 			<div class="col-md-2 col-md-offset-2">
+						<h:commandButton value="Cadastrar turma" action="cadastrar-turma" class="btn btn-info"/>
+					</div>
+				</div>
 			</h:form>
 		</div>
 	</h:body>
