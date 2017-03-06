@@ -70,6 +70,7 @@ public class TurmasBean {
 		turmaDao.beginTransaction();
 		turmaDao.insert(this.turma);
 		turmaDao.commit();
+		this.turmas.add(this.turma);
 		return "listar-turmas?faces-redirect=true";
 	}
 }
