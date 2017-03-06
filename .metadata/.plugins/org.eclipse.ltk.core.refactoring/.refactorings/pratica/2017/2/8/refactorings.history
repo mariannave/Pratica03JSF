@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move &apos;lista.xhtml&apos; to &apos;view&apos;" description="Move &apos;lista.xhtml&apos; to &apos;view&apos;" destination="src/main/webapp/view" element1="src/main/webapp/lista.xhtml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1487718377126" updateReferences="true"/>
-</session>
