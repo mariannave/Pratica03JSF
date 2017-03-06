@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+	</h:head>
+	<h:body>
+	<h1>Alunos <i class="fa fa-users" aria-hidden="true"></i></h1>
+		<h:form>
+			<h:outputText rendered="#{empty alunosBean.alunos}" value="Esta turma não possui alunos."/>
+		
+			<h:dataTable var="aluno" value="#{alunosBean.alunos}"  rendered="#{not empty alunosBean.alunos}" style="background-color: gray;" rowClasses="greenRow,whiteRow" cellpadding="5" cellspacing="1" headerClass="header">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputText value="#{aluno.id}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Matrícula</f:facet>
+					<h:outputText value="#{aluno.matricula}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{aluno.nome}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">E-mail</f:facet>
+					<h:outputText value="#{aluno.email}"/>
+				</h:column>
+			</h:dataTable>
+
+			<h:commandButton action="#{alunosBean.cadastrar(alunosBean.turma)}" value="Cadastrar"/>
+			<h:commandButton value="Voltar" action="listar-turmas" immediate="true"/>
+			
+		</h:form>
+	</h:body>
+</html>
