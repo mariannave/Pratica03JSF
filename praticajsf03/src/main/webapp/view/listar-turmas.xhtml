@@ -47,7 +47,9 @@
 					</h:column>
 					<h:column>
 						<f:facet name="header">Excluir</f:facet>
-						<h:commandLink styleClass="fa fa-remove" action="#{turmasBean.excluir(turma)}" />
+						<h:commandLink styleClass="fa fa-remove" action="#{turmasBean.excluir(turma)}">
+							 <f:ajax execute="@form" render="@form" />
+						</h:commandLink>
 					</h:column>
 				</h:dataTable>
 				<br>

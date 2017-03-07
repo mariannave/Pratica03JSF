@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
 import br.edu.ifpb.pweb.turmas.dao.PersistenceUtil;
@@ -13,8 +13,7 @@ import br.edu.ifpb.pweb.turmas.dao.TurmaDAO;
 import br.edu.ifpb.pweb.turmas.model.Turma;
 
 @ManagedBean(name = "turmasBean")
-@SessionScoped
-
+@ViewScoped
 
 public class TurmasBean {
 	private TurmaDAO turmaDao;
@@ -57,12 +56,13 @@ public class TurmasBean {
 		this.editavel.put(turma.getId(), false);
 	}
 	
-	public void excluir(Turma turma) {
+	public String excluir(Turma turma) {
 		turmaDao = new TurmaDAO(PersistenceUtil.getCurrentEntityManager());
 		turmaDao.beginTransaction();
 		turmaDao.delete(turma);
 		turmaDao.commit();
 		this.turmas.remove(this.turma);
+		return "listar-turmas?faces-redirect=true";
 	}
 	
 	public String cadastrar(){
@@ -70,7 +70,7 @@ public class TurmasBean {
 		turmaDao.beginTransaction();
 		turmaDao.insert(this.turma);
 		turmaDao.commit();
-		this.turmas.add(this.turma);
+		this.turma = new Turma();
 		return "listar-turmas?faces-redirect=true";
 	}
 }

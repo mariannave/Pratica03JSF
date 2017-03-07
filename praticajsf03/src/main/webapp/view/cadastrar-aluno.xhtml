@@ -39,11 +39,11 @@
 				<br></br>
 				
 				<div class="row">
-		  			<div class="col-xs-6">
-						<h:commandButton action="#{alunosBean.cadastrarAluno}" value="Cadastrar" class="btn btn-primary"/>
+					<div class="col-xs-6">
+		  				<h:commandButton value="Voltar" action="listar-alunos" immediate="true" class="btn btn-danger"/>
 					</div>
 		  			<div class="col-xs-6">
-		  				<h:commandButton value="Voltar" action="listar-alunos" immediate="true" class="btn btn-danger"/>
+						<h:commandButton action="#{alunosBean.cadastrarAluno}" value="Cadastrar" class="btn btn-primary"/>
 					</div>
 				</div>
 			</h:form>
