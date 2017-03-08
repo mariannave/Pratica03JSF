@@ -61,8 +61,8 @@ public class TurmasBean {
 		turmaDao.beginTransaction();
 		turmaDao.delete(turma);
 		turmaDao.commit();
-		this.turmas.remove(this.turma);
-		return "listar-turmas?faces-redirect=true";
+		this.turmas.remove(turma);
+		return null;
 	}
 	
 	public String cadastrar(){
